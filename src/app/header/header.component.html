@@ -1,202 +1,163 @@
 
 
-
- <div id="hw-hero">
-      <div class="header header1">
-        <div  [ngClass]="{'f-nav fadeindown': isScrolled}" class="header-navigation">
-          <div class="row"   >
-            <div class="col-sm-12">
-              <div class="logonav">
-                <div class="row no-gutter">
-                  <div class="col-sm-1 position-relative">
-                    <div class="logo"> <a href="index"><img
-                          src="assets/images/magadh-capital-logo-revised-v02.png"
-                          alt /></a> </div>
-                  </div>
-                  <div class="col-sm-11">
-                    <nav id="desktop-menu">
-                      <ul class="sf-menu" id="navigation">
-                        <li routerLinkActive="current"  [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/">Home</a></li>
-                        <li routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/backbone">The Backbone</a></li>
-                        <li routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/difference">Magadh Difference</a></li>
-                        <li routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/philosophy">Investment Framework</a>
-                          <ul>
-                            <li><a routerLink="/philosophy">Investment
-                                Philosophy &amp; Style</a></li>
-                            <li><a routerLink="/philosophy">Investment
-                                Process</a></li>
-                            <li><a routerLink="/philosophy">Our
-                                Inspiration</a></li>
-                          </ul>
-                        </li>
-                        <li  routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/risk-management">Risk
-                            Management</a></li>
-                        <li routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/team">Our Team</a></li>
-                        <li routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/resources">RESOURCES</a>
-                          <ul>
-                            <li><a [routerLink]="['/resources']" fragment="our_blogs">Our Blogs</a></li>
-                            <li><a [routerLink]="['/resources']" fragment="Media">Media</a></li>
-                            <li><a [routerLink]="['/resources']" fragment="Investor_Letters">Investor Letters</a></li>
-                            <li><a [routerLink]="['/resources']" fragment="towards_awareness">Towards Awareness</a></li>
-                                <li><a [routerLink]="['/resources']" fragment="UPI">UPI Payment</a></li>
-                          </ul>
-                        </li>
-                        <li routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="assistance">Investor Assistance</a>
-                          <ul>
-                            <li><a (click)="loginPage()" style="cursor: pointer;">Login</a></li>
-                            <li><a [routerLink]="['/assistance']" fragment="invest">How to invest with us</a></li>
-                            <li><a [routerLink]="['/assistance']" fragment="download">Downloads</a></li>
-                            <li><a [routerLink]="['/assistance']" fragment="complaints">Grievances</a></li>
-                            <li><a [routerLink]="['/assistance']" fragment="FAQ">FAQ</a></li>
-                          </ul>
-                        </li>
-                        <li routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="contact-us">Contact</a></li>
-                      </ul>
-                    </nav>
-                  </div>
-                </div>
+<div id="hw-hero">
+ <header role="banner" class="header header1">
+  <div [class.f-nav]="isScrolled && isDesktop"
+  [class.fadeindown]="isScrolled && isDesktop" class="header-navigation">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="logonav">
+          <div class="row no-gutter">
+            <div class="col-sm-1 position-relative">
+              <div class="logo">
+                <a routerLink="/">
+                  <img src="assets/images/magadh-capital-logo-revised-v02.png" alt="Magadh Capital" />
+                </a>
               </div>
             </div>
-          </div>
-        </div>
+            
+            <!-- Hamburger Menu Icon (Mobile Only) -->
+          <button class="hamburger-menu d-md-none"
+          style="z-index: 999; align-items: end;    
+ 
+    margin-top: 0;
+    padding-left: 0;
+    max-width: 64px;
+    text-align: center;
+    position: fixed;
+    top: 20px;
+    right: 10px;"
+        (click)="toggleSidePanel()"
+        aria-label="Open menu">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 
-        <!-- LOGO & NAVIGATION --> <!-- END OF LOGO & NAVIGATION -->
-
-      </div>
-
-      <!-- SLIDER -->
-      <div class="slider-pro" id="index-slider">
-        <div class="sp-slides">
-          <!-- Slide 1 -->
-          <div class="sp-slide">
-            <img class="sp-image" src="assets/img/1_home.jpg" alt />
-            <div class="hw-the-slider-content">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="hw-the-slider-container">
-                    <div class="hw-the-slider-captions sp-layer"
-                      data-show-transition="left" data-show-delay="800">
-                      <h2>Helping Our Investors Meet Their Wealth
-                        Objectives</h2>
-                      <!--<p>Magadh Capital is a Mumbai based long-only India equity fund registered as a category III AIF (Alternative Investment Fund) with SEBI (Securities and Exchange Board of India).</p>-->
-
-                      <p style="text-align:center;">Magadh Capital is a Mumbai
-                        based SEBI (Securities and Exchange Board of India) -
-                        registered Portfolio Manager</p>
-                      <!-- <a href="" class="hw-btn">Learn More</a> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="sp-slide">
-            <img class="sp-image" src="assets/images/slide_backbone.jpg" alt />
-            <div class="hw-the-slider-content">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="hw-the-slider-container">
-                    <div class="hw-the-slider-captions sp-layer"
-                      data-show-transition="left" data-show-delay="800">
-                      <h2>The Non-negotiables</h2>
-                      <p style="text-align:center; ">Integrity, Knowledge,
-                        Simplicity</p>
-                      <!-- <a href="" class="hw-btn">Learn More</a> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- End of Slide 1 -->
-
-          <div class="sp-slide">
-            <img class="sp-image" src="assets/images/inner_difference.jpg" alt />
-            <div class="hw-the-slider-content">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="hw-the-slider-container">
-                    <div class="hw-the-slider-captions sp-layer"
-                      data-show-transition="left" data-show-delay="800">
-                      <h2>Our Conventional Style Makes Us Different</h2>
-                      <p style="text-align:center;">Old school investment style
-                        may seem boring but history suggests that if it is
-                        applied with discipline and patience it can lead to
-                        healthy wealth creation</p>
-                      <!-- <a href="" class="hw-btn">Learn More</a> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="sp-slide">
-            <img class="sp-image" src="assets/images/invest_philosophy.jpg" alt />
-            <div class="hw-the-slider-content">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="hw-the-slider-container">
-                    <div class="hw-the-slider-captions sp-layer"
-                      data-show-transition="left" data-show-delay="800">
-                      <h2>Alignment in Investment Philosophy and Life
-                        Philosophy</h2>
-                      <p style="text-align:center;">Application of a mix of top
-                        down as well as bottom-up approach to create a portfolio
-                        of stocks selected by dovetailing fundamental analysis
-                        and behavioural finance, and then running the portfolio
-                        in a disciplined manner</p>
-                      <!-- <a href="" class="hw-btn">Learn More</a> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End of Slide 3 -->
-          <div class="sp-slide">
-            <img class="sp-image" src="assets/img/home_tree.jpg" alt />
-            <div class="hw-the-slider-content">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="hw-the-slider-container">
-                    <div class="hw-the-slider-captions sp-layer"
-                      data-show-transition="right" data-show-delay="800">
-                      <h2>Standing on The Giants' Shoulders</h2>
-                      <p style="text-align:center;">Our investing style draws
-                        heavily from top practitioners of fundamental style of
-                        investing,
-                        from our own experience in the field, and from the
-                        masters in the field of behavioural
-                        economics.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="sp-slide">
-            <img class="sp-image" src="assets/images/slide_risk.jpg" alt />
-            <div class="hw-the-slider-content">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="hw-the-slider-container">
-                    <div class="hw-the-slider-captions sp-layer"
-                      data-show-transition="right" data-show-delay="800">
-                      <h2>Awareness of Pitfalls</h2>
-                      <p style="text-align:center;">In keeping with our view
-                        that markets are inherently risky, we assign high
-                        priority to assessing, understanding and optimising risk
-                        pertaining to stocks and portfolios - Capital protection
-                        is a crucial focus area for us</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <!-- Desktop Navigation -->
+            <div class="col-sm-11 d-none d-md-block">
+              <nav id="desktop-menu" role="navigation" aria-label="Main Navigation">
+                <ul class="sf-menu" id="navigation">
+                  <li routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }">
+                    <a routerLink="/" aria-current="page">Home</a>
+                  </li>
+                  <li routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }">
+                    <a routerLink="/backbone" aria-current="backbone">The Backbone</a>
+                  </li>
+                  <li routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }">
+                    <a routerLink="/difference" aria-current="difference">Magadh Difference</a>
+                  </li>
+                  <li class="menu-item" routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }">
+                    <a routerLink="/philosophy" aria-current="philosophy" (click)="toggleSubmenu($event)">
+                      Investment Framework <span class="sr-only">(has submenu)</span>
+                    </a>
+                    <ul class="submenu">
+                      <li>
+                        <a [routerLink]="['/philosophy']" fragment="style" aria-current="style">
+                          Investment Philosophy & Style
+                        </a>
+                      </li>
+                      <li>
+                        <a [routerLink]="['/philosophy']" fragment="process" aria-current="process">
+                          Investment Process
+                        </a>
+                      </li>
+                      <li>
+                        <a [routerLink]="['/philosophy']" fragment="inspiration" aria-current="inspiration">
+                          Our Inspiration
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }">
+                    <a routerLink="/risk-management" aria-current="risk-management">Risk Management</a>
+                  </li>
+                  <li routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }">
+                    <a routerLink="/team" aria-current="team">Our Team</a>
+                  </li>
+                  <li class="menu-item" routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }">
+                    <a routerLink="/resources" aria-current="resources">
+                      Resources <span class="sr-only">(has submenu)</span>
+                    </a>
+                    <ul class="submenu">
+                      <li><a [routerLink]="['/resources']" fragment="our_blogs" aria-current="our_blogs">Our Blogs</a></li>
+                      <li><a [routerLink]="['/resources']" fragment="Media" aria-current="Media">Media</a></li>
+                      <li><a [routerLink]="['/resources']" fragment="Investor_Letters" aria-current="Investor_Letters">Investor Letters</a></li>
+                      <li><a [routerLink]="['/resources']" fragment="towards_awareness" aria-current="towards_awareness">Towards Awareness</a></li>
+                      <li><a [routerLink]="['/resources']" fragment="UPI" aria-current="UPI">UPI Payment</a></li>
+                    </ul>
+                  </li>
+                  <li class="menu-item" routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }">
+                    <a routerLink="/assistance" aria-current="assistance">
+                      Investor Assistance <span class="sr-only">(has submenu)</span>
+                    </a>
+                    <ul class="submenu">
+                      <li><a (click)="loginPage()" aria-current="login" style="cursor: pointer;">Login</a></li>
+                      <li><a [routerLink]="['/assistance']" fragment="invest" aria-current="invest">How to invest with us</a></li>
+                      <li><a [routerLink]="['/assistance']" fragment="download" aria-current="download">Downloads</a></li>
+                      <li><a [routerLink]="['/assistance']" fragment="complaints" aria-current="complaints">Grievances</a></li>
+                      <li><a [routerLink]="['/assistance']" fragment="FAQ" aria-current="FAQ">FAQ</a></li>
+                    </ul>
+                  </li>
+                  <li routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }">
+                    <a routerLink="/contact-us" aria-current="contact-us">Contact</a>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
         </div>
       </div>
-      <!-- END OF SLIDER -->
     </div>
+  </div>
+</header>
+
+<!-- Mobile Side Panel -->
+<div class="side-panel" [class.open]="sidePanelOpen">
+  <button class="close-btn" (click)="closeSidePanel()">✕</button>
+
+  <ul class="mobile-menu">
+    <li><a (click)="navigate('/')">Home</a></li>
+    <li><a (click)="navigate('/backbone')">The Backbone</a></li>
+    <li><a (click)="navigate('/difference')">Magadh Difference</a></li>
+
+    <!-- Investment Framework -->
+    <li class="has-submenu">
+      <a (click)="toggleMobileSubmenu('framework')">
+        Investment Framework
+        <span>▾</span>
+      </a>
+
+      <ul class="submenu" *ngIf="activeMobileSubmenu === 'framework'">
+        <li><a (click)="navigate('/philosophy','style')">Philosophy & Style</a></li>
+        <li><a (click)="navigate('/philosophy','process')">Process</a></li>
+        <li><a (click)="navigate('/philosophy','inspiration')">Inspiration</a></li>
+      </ul>
+    </li>
+
+    <li><a (click)="navigate('/risk-management')">Risk Management</a></li>
+    <li><a (click)="navigate('/team')">Our Team</a></li>
+
+    <!-- Assistance -->
+    <li class="has-submenu">
+      <a (click)="toggleMobileSubmenu('assist')">
+        Investor Assistance <span>▾</span>
+      </a>
+
+      <ul class="submenu" *ngIf="activeMobileSubmenu === 'assist'">
+        <li><a (click)="loginPage()">Login</a></li>
+        <li><a (click)="navigate('/assistance','invest')">How to invest</a></li>
+        <li><a (click)="navigate('/assistance','download')">Downloads</a></li>
+        <li><a (click)="navigate('/assistance','complaints')">Grievances</a></li>
+        <li><a (click)="navigate('/assistance','FAQ')">FAQ</a></li>
+      </ul>
+    </li>
+
+    <li><a (click)="navigate('/contact-us')">Contact</a></li>
+  </ul>
+</div>
+<!-- Backdrop Overlay -->
+<div class="backdrop"
+     *ngIf="sidePanelOpen"
+     (click)="closeSidePanel()">
+</div>

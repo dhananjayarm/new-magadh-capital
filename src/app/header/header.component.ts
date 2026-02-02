@@ -9,31 +9,54 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
 
-
   isScrolled = false;
+  sidePanelOpen = false;
+  activeMobileSubmenu: string | null = null;
+  submenuOpen = false;
+  isDesktop = window.innerWidth >= 768;
 
-  constructor(@Inject(DOCUMENT) private document: Document, public router: Router) { }
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private router: Router
+  ) { }
+
+  toggleSidePanel() {
+    this.sidePanelOpen = !this.sidePanelOpen;
+  }
+  closeSidePanel() {
+    this.sidePanelOpen = false;
+    this.activeMobileSubmenu = null;
+  }
+
+  toggleMobileSubmenu(menu: string) {
+    this.activeMobileSubmenu =
+      this.activeMobileSubmenu === menu ? null : menu;
+  }
+
+  navigate(route: string, fragment?: string) {
+    this.closeSidePanel();
+    this.router.navigate([route], { fragment });
+
+  }
 
   @HostListener('window:scroll', [])
-  onWindowScroll(): void {
-    const scrollTop = window.pageYOffset ||
+  onWindowScroll() {
+    this.isDesktop = window.innerWidth >= 768;
+    const scrollTop =
+      window.pageYOffset ||
       this.document.documentElement.scrollTop ||
-      this.document.body.scrollTop || 0;
+      this.document.body.scrollTop ||
+      0;
+
     this.isScrolled = scrollTop > 200;
   }
 
-  isActive(path: string): boolean {
-    return this.router.url === path;
+  loginPage() {
+    this.closeSidePanel();
+    window.open('https://faconnect.kotak.bank.in/', '_blank', 'noopener,noreferrer');
   }
 
-  // onWindowScroll(): void {
-  //   const scrollTop = window.pageYOffset ||
-  //     this.document.documentElement.scrollTop ||
-  //     this.document.body.scrollTop || 0;
-  //   this.isScrolled = scrollTop > 200;
-  // }
-
-  loginPage() {
-    window.open('https://faconnect.kotak.bank.in/', '_blank', 'noopener,noreferrer');
+  toggleSubmenu(event: Event) {
+    this.submenuOpen = !this.submenuOpen;
   }
 }

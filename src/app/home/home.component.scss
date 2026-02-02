@@ -6,7 +6,7 @@
 
   img {
     object-fit: cover;
-      height: 360px;
+    height: 360px;
   }
 
   .carousel-caption {
@@ -20,19 +20,22 @@
     width: min(90%, 1000px);
   }
 
-  .carousel-caption h2 {
+  .carousel-caption h1 {
     color: #fff;
     font-size: 28px;
-    text-shadow: 0 2px 12px rgba(0,0,0,.45);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
   }
 
   .carousel-caption p {
     color: #f1f1f1;
     font-size: 1.05rem;
-    text-shadow: 0 2px 10px rgba(0,0,0,.35);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
     margin: 0;
     text-align: center;
   }
+}
+.carousel-indicators button {
+  background-color: #0f0f0f;
 }
 
 // Features/Our Vision card styles to match reference image
@@ -50,7 +53,9 @@
     position: relative;
     background: #fff;
     border-radius: 6px;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.10), 0 15px 12px rgba(0, 0, 0, 0.02);
+    box-shadow:
+      0 19px 38px rgba(0, 0, 0, 0.1),
+      0 15px 12px rgba(0, 0, 0, 0.02);
     padding: 28px 10px 35px;
     // max-width: 980px;
     border: 1px solid #dfdfdf;
@@ -59,12 +64,13 @@
 
   .cta-title {
     position: absolute;
-    top: -18px;
+    top: -30px;
     left: 50%;
     transform: translateX(-50%);
     padding: 8px 16px;
     border-radius: 999px;
     font-weight: 700;
+    font-size: 13px;
     color: #fff;
     box-shadow: 0 6px 18px rgba(245, 130, 32, 0.35);
     background: var(--bs-primary);
@@ -72,7 +78,11 @@
   }
 }
 
- span.typcn {font-size:54px; line-height:30px; display:table-cell; }
+span.typcn {
+  font-size: 54px;
+  line-height: 30px;
+  display: table-cell;
+}
 
 // Section backgrounds (full-width with white left overlay, dark text)
 #backbone,
@@ -88,30 +98,30 @@
 }
 
 #backbone {
-  background-image: url('/assets/images/home_backbone.jpg');
+  background-image: url("/assets/images/home_backbone.jpg");
 }
 
 #difference {
-  background-image: url('/assets/images/home_difference.jpg');
+  background-image: url("/assets/images/home_difference.jpg");
 }
 
 #philosophy {
   background-position: left center;
-  background-image: url('/assets/images/invest_philosophy.jpg') !important;
+  background-image: url("/assets/images/invest_philosophy.jpg") !important;
 }
 
 #risk-management {
   background-position: left center;
-  background-image: url('/assets/images/bg_risk.jpg') !important;
+  background-image: url("/assets/images/bg_risk.jpg") !important;
 }
 
 // Fallback for class-based hooks if IDs are altered
 .aboutus.investment {
-  background-image: url('/assets/images/invest_philosophy.jpg') !important;
+  background-image: url("/assets/images/invest_philosophy.jpg") !important;
 }
 
 .aboutus.risk {
-  background-image: url('/assets/images/bg_risk.jpg') !important;
+  background-image: url("/assets/images/bg_risk.jpg") !important;
 }
 // .scroll-top {
 //   position: fixed;
@@ -127,3 +137,23 @@
 //   opacity: 1;
 //   visibility: visible;
 // }
+.backbone-list {
+  padding-left: 1rem;
+}
+
+.backbone-list li {
+  margin-bottom: 1rem;
+}
+
+.backbone-list {
+  list-style-type: lower-alpha;
+  /* a, b, c */
+}
+address {
+  display: flex;
+  white-space: nowrap;
+  margin: auto;
+  margin-left: 20px;
+  justify-content: center;
+  color: #ccc;
+}

@@ -1,36 +1,50 @@
 /* Ensure tabs are clickable and above any overlays */
-:host ::ng-deep .normaltabs.tabs-top-horizontal>.nav-tabs {
-    position: relative;
-    z-index: 3;
+:host ::ng-deep .normaltabs.tabs-top-horizontal > .nav-tabs {
+  position: relative;
+  z-index: 3;
 }
 
 :host ::ng-deep .normaltabs .nav-tabs .nav-link {
-    pointer-events: auto;
-    cursor: pointer;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 :host ::ng-deep .tab-content {
-    position: relative;
-    z-index: 2;
-    pointer-events: auto;
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
 }
 
 /* Theme the active tab to #821517 (matches site colors) */
-:host ::ng-deep .normaltabs.tabs-top-horizontal>.nav-tabs .nav-link {
-    background: #fff;
-    color: #808080;
-    text-transform: uppercase;
+:host ::ng-deep .normaltabs.tabs-top-horizontal > .nav-tabs .nav-link {
+  background: #fff;
+  color: #808080;
+  text-transform: uppercase;
 }
 
-:host ::ng-deep .normaltabs.tabs-top-horizontal>.nav-tabs .nav-link:hover,
-:host ::ng-deep .normaltabs.tabs-top-horizontal>.nav-tabs .nav-link:focus {
-    background: #821517;
-    color: #fff;
+:host ::ng-deep .normaltabs.tabs-top-horizontal > .nav-tabs .nav-link:hover,
+:host ::ng-deep .normaltabs.tabs-top-horizontal > .nav-tabs .nav-link:focus {
+  background: #821517;
+  color: #fff;
 }
 
-:host ::ng-deep .normaltabs.tabs-top-horizontal>.nav-tabs .nav-link.active,
-:host ::ng-deep .normaltabs.tabs-top-horizontal>.nav-tabs .nav-link.active:hover,
-:host ::ng-deep .normaltabs.tabs-top-horizontal>.nav-tabs .nav-link.active:focus {
-    background: #821517;
-    color: #fff;
+:host ::ng-deep .normaltabs.tabs-top-horizontal > .nav-tabs .nav-link.active,
+:host
+  ::ng-deep
+  .normaltabs.tabs-top-horizontal
+  > .nav-tabs
+  .nav-link.active:hover,
+:host
+  ::ng-deep
+  .normaltabs.tabs-top-horizontal
+  > .nav-tabs
+  .nav-link.active:focus {
+  background: #821517;
+  color: #fff;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  background-color: #821517;
+  color: white;
 }
