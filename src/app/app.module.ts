@@ -27,6 +27,7 @@ import { PmsfaqComponent } from './pmsfaq/pmsfaq.component';
 import { ResoursesComponent } from './resourses/resourses.component';
 import { RiskManagementComponent } from './risk-management/risk-management.component';
 import { TeamComponent } from './team/team.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { TeamComponent } from './team/team.component';
     HomeComponent,
     ContactUsComponent,
     TeamComponent,
-    BackboneComponent,
+     BackboneComponent,
     DifferenceComponent,
     DisclaimerComponent,
     DisclosureComponent,
@@ -57,7 +58,8 @@ import { TeamComponent } from './team/team.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

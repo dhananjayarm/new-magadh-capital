@@ -1,96 +1,206 @@
+<!-- Tabs -->
 <ul class="nav nav-tabs" id="myTabs" role="tablist">
-    <li class="nav-item" role="presentation">
-        <button
-            class="nav-link active"
-            id="PMS-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#PMS"
-            type="button"
-            role="tab"
-            aria-controls="PMS"
-            aria-selected="true">
-            PMS
-        </button>
-    </li>
-    <li class="nav-item" role="presentation">
-        <button
-            class="nav-link"
-            id="AIF-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#AIF"
-            type="button"
-            role="tab"
-            aria-controls="AIF"
-            aria-selected="false">
-            AIF
-        </button>
-    </li>
+  <li class="nav-item" role="presentation">
+    <button
+      class="nav-link"
+      [class.active]="selectedTab === 'PMS'"
+      id="PMS-tab"
+      type="button"
+      role="tab"
+      aria-controls="PMS"
+      [attr.aria-selected]="selectedTab === 'PMS'"
+      (click)="selectTab('PMS')">
+      PMS
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button
+      class="nav-link"
+      [class.active]="selectedTab === 'AIF'"
+      id="AIF-tab"
+      type="button"
+      role="tab"
+      aria-controls="AIF"
+      [attr.aria-selected]="selectedTab === 'AIF'"
+      (click)="selectTab('AIF')">
+      AIF
+    </button>
+  </li>
 </ul>
-<div class="tab-content" id="myTabsContent">
+
+<!-- Tab content -->
+<div class="tab-content" id="myTabsContent">  <!-- PMS Tab Pane -->
+   <div
+    class="tab-pane fade"
+    [class.show]="selectedTab === 'PMS'"
+    [class.active]="selectedTab === 'PMS'"
+    id="PMS"
+    role="tabpanel"
+     aria-labelledby="PMS-tab"
+    *ngIf="selectedTab === 'PMS'">
+    <!-- <div id="accordion" class="style1 panel-group">
+      <div class="panel panel-default" *ngFor="let faq of faqs">
+        <div class="panel-heading">
+          <h2 class="panel-title">
+            <button
+              id="faq-{{faq.id}}-button"
+              class="accordion-button"
+              type="button"
+              (click)="toggleFAQ(faq)"
+                [class.active-question]="activeFAQId === faq.id"
+              [attr.aria-expanded]="faq.isOpen"
+              [attr.aria-controls]="faq.id">
+              <i
+                class="indicator  me-2 fa "
+                [ngClass]="{'fa-minus-square-o': faq.isOpen,'fa-plus-square-o': !faq.isOpen}">
+              </i>
+              {{ faq.question }}
+            </button>
+          </h2>
+        </div>
+        <div
+          id="{{faq.id}}"
+          class="panel-collapse"
+          *ngIf="faq.isOpen"
+          role="region"
+          [attr.aria-labelledby]="'faq-' + faq.id + '-button'">
+          <div class="panel-body">
+            <p [innerHTML]="faq.answer"></p>
+            <ul *ngIf="faq.array && faq.array.length">
+              <li *ngFor="let item of faq.array">{{ item }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div id="accordion" class="style1 panel-group">
+  <div class="panel panel-default" *ngFor="let faq of faqs">
+    <div class="panel-heading">
+      <h2 class="panel-title">
+        <button
+          id="faq-{{faq.id}}-button"
+          class="accordion-button"
+          type="button"
+          (click)="toggleFAQ(faq)"
+          [class.focused-question]="activeFAQId === faq.id"
+          [attr.aria-expanded]="faq.isOpen"
+          [attr.aria-controls]="faq.id">
+          <i class="indicator me-2 fa"
+             [ngClass]="{'fa-minus-square-o': faq.isOpen,'fa-plus-square-o': !faq.isOpen}">
+          </i>
+          {{ faq.question }}
+        </button>
+      </h2>
+    </div>
+
     <div
-        class="tab-pane fade show active"
-        id="PMS"
-        role="tabpanel"
-        aria-labelledby="PMS-tab">
-        <div id="accordion" class="style1 panel-group">
-            <div class="panel panel-default" *ngFor="let faq of faqs">
-                <div class="panel-heading" (click)="toggleFAQ(faq)">
-                    <h4 class="panel-title">
-                        <a>
-                            <i
-                                class="indicator fa"
-                                [ngClass]="{
-                  'fa-minus-square-o': faq.isOpen,
-                  'fa-plus-square-o': !faq.isOpen
-                }"></i>
-                            {{ faq.question }}
+      id="{{faq.id}}"
+      class="panel-collapse"
+      *ngIf="faq.isOpen"
+      role="region"
+      [attr.aria-labelledby]="'faq-' + faq.id + '-button'">
+      <div class="panel-body">
+        <p [innerHTML]="faq.answer"></p>
 
-                        </a>
-                    </h4>
-                </div>
-                <div class="panel-collapse" [id]="faq.id" *ngIf="faq.isOpen">
-                    <div class="panel-body">
-                        <p [innerHTML]="faq.answer"></p>
-                        <ul *ngIf="faq.array && faq.array.length">
-                            <li *ngFor="let item of faq.array">{{ item
-                                }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <!-- Render dynamic array if present -->
+        <ul *ngIf="faq.array?.length">
+          <li *ngFor="let item of faq.array">{{ item }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <!-- AIF Tab Pane -->
+<div
+    class="tab-pane fade"
+    [class.show]="selectedTab === 'AIF'"
+    [class.active]="selectedTab === 'AIF'"
+    id="AIF"
+    
+    role="tabpanel"
+    aria-labelledby="AIF-tab"
+    *ngIf="selectedTab === 'AIF'">
+    <!-- <div id="accordion" class="style1 panel-group">
+      <div class="panel panel-default" *ngFor="let aif of aifs">
+        <div class="panel-heading">
+          <h2 class="panel-title">
+            <button
+              id="aif-{{aif.id}}-button"
+              class="accordion-button"
+              type="button"
+               [class.active-question]="activeFAQId === aif.id"
+              (click)="toggleAIF(aif)"
+              [attr.aria-expanded]="aif.isOpen"
+              [attr.aria-controls]="aif.id">
+              <i
+                class="indicator  me-2 fa"
+                [ngClass]="{'fa-minus-square-o': aif.isOpen,'fa-plus-square-o': !aif.isOpen}">
+              </i>
+              {{ aif.question }}
+            </button>
+          </h2>
         </div>
+        <div
+          id="{{aif.id}}"
+          class="panel-collapse"
+          *ngIf="aif.isOpen"
+          role="region"
+          [attr.aria-labelledby]="'aif-' + aif.id + '-button'">
+          <div class="panel-body">
+            <p [innerHTML]="aif.answer"></p>
+            <ul *ngIf="aif.array && aif.array.length">
+              <li *ngFor="let item of aif.array">{{ item }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div id="accordion" class="style1 panel-group">
+  <div class="panel panel-default" *ngFor="let aif of aifs">
+    <div class="panel-heading">
+      <h2 class="panel-title">
+        <button
+          id="aif-{{aif.id}}-button"
+          class="accordion-button"
+          type="button"
+          (click)="toggleAIF(aif)"
+          [attr.aria-expanded]="aif.isOpen"
+          [attr.aria-controls]="aif.id"
+          [class.active-question]="activeFAQId === aif.id">
+          <i class="indicator me-2 fa"
+             [ngClass]="{'fa-minus-square-o': aif.isOpen,'fa-plus-square-o': !aif.isOpen}">
+          </i>
+          {{ aif.question }}
+        </button>
+      </h2>
     </div>
 
-    <div class="tab-pane fade" id="AIF" role="tabpanel"
-        aria-labelledby="AIF-tab">
-        <div id="accordion" class="style1 panel-group">
-            <div id="accordion" class="style1 panel-group">
-                <div class="panel panel-default" *ngFor="let aif of aifs">
-                    <div class="panel-heading" (click)="toggleAIF(aif)">
-                        <h4 class="panel-title">
-                            <a>
-                                <i
-                                    class="indicator fa"
-                                    [ngClass]="{
-                    'fa-minus-square-o': aif.isOpen,
-                    'fa-plus-square-o': !aif.isOpen
-                  }"></i>
-                                {{ aif.question }}
-                            </a>
-                        </h4>
-                    </div>
-                    <div class="panel-collapse" [id]="aif.id"
-                        *ngIf="aif.isOpen">
-                        <div class="panel-body">
-                            <p [innerHTML]="aif.answer"></p>
-                            <ul *ngIf="aif.array && aif.array.length">
-                                <li *ngFor="let item of aif.array">{{ item
-                                    }}</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div
+      id="{{aif.id}}"
+      class="panel-collapse"
+      *ngIf="aif.isOpen"
+      role="region"
+      [attr.aria-labelledby]="'aif-' + aif.id + '-button'">
+      <div class="panel-body">
+        <p>{{ aif.answer }}</p>
+
+        <!-- dynamically render sub-items as list -->
+        <ul *ngIf="aif.subItems?.length">
+          <li *ngFor="let item of aif.subItems">{{ item }}</li>
+        </ul>
+
+        <!-- render any additional categories -->
+        <ul *ngIf="aif.moreCategories?.length">
+          <li *ngFor="let cat of aif.moreCategories">{{ cat }}</li>
+        </ul>
+      </div>
     </div>
+  </div>
+</div>
+
+  </div>
 </div>

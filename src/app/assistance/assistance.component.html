@@ -1,13 +1,16 @@
-<div id="hw-hero">
+<header>
+    <div id="hw-hero">
     <div id="page-header" class="contact">
         <div class="title-breadcrumbs">
             <h1>INVESTOR ASSISTANCE</h1>
         </div>
     </div>
 </div>
-
+</header>
+ 
 <div class="row">
     <div class="col-sm-12 normaltabs tabs-top-horizontal my-3">
+        <!-- <nav aria-label="Investor Assistance Tabs"> -->
         <ul
             class="nav nav-tabs"
             id="assistances"
@@ -90,7 +93,9 @@
                     fragment="FAQ">FAQ</a>
             </li>
         </ul>
-
+        <!-- </nav> -->
+        <main id="main-content">
+ 
         <div class="tab-content">
             <div class="tab-pane fade in" id="login">
                 <app-login-in
@@ -119,5 +124,6 @@
                 [class.active]="activeTab === 'FAQ'"
                 [class.show]="activeTab === 'FAQ'"></app-faqs>
         </div>
+        </main>
     </div>
 </div>

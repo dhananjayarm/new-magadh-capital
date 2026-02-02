@@ -18,14 +18,15 @@
                 [class.active]="activeTab === 'our_blogs'">
                 <a
                     class="nav-link"
-                    id="tab-our_blogs-tab"
-                    data-bs-toggle="tab"
+                     data-bs-toggle="tab"
                     [routerLink]="[]"
-                    href="#our_blogs"
+                     id="tab-our_blogs"
+                     href="#our_blogs"
                     fragment="our_blogs"
                     role="tab"
+                    
                     aria-controls="tab-our_blogs"
-                    aria-selected="false">OUR BLOGS</a>
+                    aria-selected="false">OUR BLOGSs</a>
             </li>
             <li
                 class="nav-item"
@@ -72,7 +73,7 @@
                     aria-selected="false"
                     fragment="towards_awareness">Towards Awareness</a>
             </li>
-                <li
+            <li
                 class="nav-item"
                 role="presentation"
                 [class.active]="activeTab === 'UPI'">
@@ -90,34 +91,46 @@
         </ul>
 
         <div class="tab-content">
-                 <app-blogs
-                    *ngIf="activeTab === 'our_blogs'"
-                    [class.active]="activeTab === 'our_blogs'"
-                    [class.show]="activeTab === 'our_blogs'"></app-blogs>
- 
+            <app-blogs
+                *ngIf="activeTab === 'our_blogs'"
+                   id="tab-our_blogs"
+                role="tabpanel"
+                aria-labelledby="tab-our_blogs"
+                [class.active]="activeTab === 'our_blogs'"
+                [class.show]="activeTab === 'our_blogs'"></app-blogs>
+
             <app-media
                 *ngIf="activeTab === 'Media'"
+                  id="tab-Media"
+                role="tabpanel"
+                aria-labelledby="tab-Media"
                 [class.active]="activeTab === 'Media'"
                 [class.show]="activeTab === 'Media'"></app-media>
-                
-<app-newsletters  *ngIf="activeTab === 'Investor_Letters'"
-                    [class.active]="activeTab === 'Investor_Letters'"
-                    [class.show]="activeTab === 'Investor_Letters'">
 
+            <app-newsletters *ngIf="activeTab === 'Investor_Letters'"
+                [class.active]="activeTab === 'Investor_Letters'"
+                  id="tab-Investor_Letters"
+                role="tabpanel"
+                aria-labelledby="tab-Investor_Letters"
+                [class.show]="activeTab === 'Investor_Letters'">
 
-</app-newsletters>
+            </app-newsletters>
 
+            <app-towards-awareness
+                *ngIf="activeTab === 'towards_awareness'"
+                  id="tab-towards_awareness"
+                role="tabpanel"
+                aria-labelledby="tab-towards_awareness"
+                [class.active]="activeTab === 'towards_awareness'"
+                [class.show]="activeTab === 'towards_awareness'"></app-towards-awareness>
+            <app-upi
+                *ngIf="activeTab === 'UPI'"
+                  id="tab-UPI"
+                role="tabpanel"
+                aria-labelledby="tab-UPI"
+                [class.active]="activeTab === 'UPI'"
+                [class.show]="activeTab === 'UPI'"></app-upi>
 
-                <app-towards-awareness
-                    *ngIf="activeTab === 'towards_awareness'"
-                    [class.active]="activeTab === 'towards_awareness'"
-                    [class.show]="activeTab === 'towards_awareness'"></app-towards-awareness>
-                <app-upi
-                    *ngIf="activeTab === 'UPI'"
-                    [class.active]="activeTab === 'UPI'"
-                    [class.show]="activeTab === 'UPI'"></app-upi>
-
-            </div>
-            </div>
-            </div>
-            
+        </div>
+    </div>
+</div>

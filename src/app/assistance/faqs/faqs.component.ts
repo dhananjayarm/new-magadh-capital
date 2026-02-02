@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./faqs.component.scss']
 })
 export class FaqsComponent {
+  selectedTab = 'PMS';
+activeFAQId: string | null = null; 
   faqs = [
     {
       id: 'collapse1',
@@ -28,8 +30,8 @@ export class FaqsComponent {
       answer: `There are three types of PMS:`,
       array: [
         'Discretionary PMS - The portfolio manager individually and independently manages the funds and securities of each client in accordance with the needs of the client. The choice as well as the timings of the investment decisions rest solely with the portfolio manager.',
-        'Non-Discretionary PMS- The portfolio manager manages the funds in accordance with the directions of the client. The choice as well as the timings of the investment decisions rest solely with the Investor. The portfolio manager only suggests the investment ideas. However, the execution of trade is done by the portfolio manager.',
-        'Advisory Services – It involves advising the client on managing the portfolio/investments. The portfolio manager plays the role of an advisor only, the management of the portfolio/investments and execution of trade is done from the client’s end.',
+        'Non-Discretionary PMS - The portfolio manager manages the funds in accordance with the directions of the client. The choice as well as the timings of the investment decisions rest solely with the Investor. The portfolio manager only suggests the investment ideas. However, the execution of trade is done by the portfolio manager.',
+        'Advisory Services - It involves advising the client on managing the portfolio/investments. The portfolio manager plays the role of an advisor only, the management of the portfolio/investments and execution of trade is done from the client’s end.',
       ],
       isOpen: false
     },
@@ -78,13 +80,13 @@ export class FaqsComponent {
     {
       id: 'collapse9',
       question: 'How do I start PMS with MCA LLP?',
-      answer: `You can drop an email on: <a href="mailto:investor.info@magadhcapital.com">investor.info@magadhcapital.com</a> about your requirement and share your contact details. Our representative will get in touch with you to help with the onboarding process/documentation.`,
+      answer: `You can drop an email on: <a href="mailto:investor.info@magadhcapital.com" > <u> investor.info@magadhcapital.com  </u></a> about your requirement and share your contact details. Our representative will get in touch with you to help with the onboarding process/documentation.`,
       isOpen: false
     },
     {
       id: 'collapse10',
       question: `Can an investor join MCA LLP's PMS directly?`,
-      answer: `Yes. Investor have the option for direct on-boarding without intermediation of any person engaged in distribution services to avail services of Magadh Capital Advisors LLP by dropping an email on: <a href="mailto:investor.info@magadhcapital.com"> investor.info@magadhcapital.com</a>`,
+      answer: `Yes. Investor have the option for direct on-boarding without intermediation of any person engaged in distribution services to avail services of Magadh Capital Advisors LLP by dropping an email on: <a href="mailto:investor.info@magadhcapital.com">  <u>investor.info@magadhcapital.com  </u></a>`,
       isOpen: false
     },
     {
@@ -113,7 +115,7 @@ export class FaqsComponent {
       id: 'collapse14',
       question: 'How shall I add money to my account? Is it with some frequency or lump sum',
       answer: `Resident Investors with Pooled Bank Account can remit funds online via netbanking/NEFT/RTGS into our account or can sent us account payee cheque drawn on the name of MAGADH CAPITAL ADVISORS LLP. 
-Non-Resident, clients with separate account and clients for remitting funds online via netbanking / NEFT / RTGS must drop an email on: <a href="mailto:investor.info@magadhcapital.com">investor.info@magadhcapital.com</a> for account details.`,
+Non-Resident, clients with separate account and clients for remitting funds online via netbanking / NEFT / RTGS must drop an email on: <a href="mailto:investor.info@magadhcapital.com"> <u>investor.info@magadhcapital.com </u></a> for account details.`,
       isOpen: false
     },
     {
@@ -324,32 +326,24 @@ SEBI Circular No. SEBI/HO/IMD/DF1/CIR/P/2020/26 dated February 13, 2020, inter-a
     }
 
   ];
-
   aifs = [
     {
       id: 'aif1',
       question: 'What is an AIF?',
-      answer: ` Alternative Investment Fund or AIF means any
-                            fund established or incorporated in India
-                            which is a privately pooled investment
-                            vehicle which collects funds from
-                            sophisticated investors, whether Indian or
-                            foreign, for investing it in accordance with
-                            a defined investment policy for the benefit
-                            of its investors.`,
+      answer: `Alternative Investment Fund or AIF means any fund established or incorporated in India which is a privately pooled investment vehicle which collects funds from sophisticated investors, whether Indian or foreign, for investing it in accordance with a defined investment policy for the benefit of its investors.`,
       isOpen: true
     },
     {
       id: 'aif2',
-      array: [],
       question: 'What are the various categories of AIF?',
-      answer: ` a) Category I AIF:<br>
-- Venture capital funds (Including Angel Funds)<br>
-- SME Funds<br>
-- Social Venture Funds<br>
-- Infrastructure funds<br>
-b) Category II AIF<br>
-c) Category III AIF`,
+      answer: `a) Category I AIF:`,
+      subItems: [
+        'Venture capital funds (Including Angel Funds)',
+        'SME Funds',
+        'Social Venture Funds',
+        'Infrastructure funds'
+      ],
+      moreCategories: ['b) Category II AIF', 'c) Category III AIF'],
       isOpen: false
     },
     {
@@ -418,14 +412,55 @@ c) Category III AIF`,
       answer: `SEBI (Alternative Investment Funds) Regulations, 2012 and circulars issued thereunder are available on website of SEBI at: <a href="http://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListDept=yes&deptId=25" target="_blank" rel="noopener noreferrer">http://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListDept=yes&deptId=25</a> The list of registered AIFs is also available on the SEBI website.`,
       isOpen: false
     }
-  ]
+  ];
 
+ 
+  toggleAIF(aif: any) {
+    // Close other AIFs
+    this.aifs.forEach(f => {
+      if (f.id !== aif.id) f.isOpen = false;
+    });
+    // Toggle clicked FAQ
+    aif.isOpen = !aif.isOpen;
+    // Track active question
+    this.activeFAQId = aif.id;
+  }
 
   toggleFAQ(faq: any) {
+    // Close other AIFs
+    this.faqs.forEach(f => {
+      if (f.id !== faq.id) f.isOpen = false;
+    });
+    // Toggle clicked FAQ
     faq.isOpen = !faq.isOpen;
+    // Track active question
+    this.activeFAQId = faq.id;
   }
 
-  toggleAIF(aif: any) {
-    aif.isOpen = !aif.isOpen;
+
+
+  // toggleFAQ(faq: any) {
+  //   faq.isOpen = !faq.isOpen;
+  //   this.activeFAQId = faq.isOpen ? faq.id : null;
+  // }
+
+  // toggleAIF(aif: any) {
+  //   aif.isOpen = !aif.isOpen;
+  //   this.activeFAQId = aif.isOpen ? aif.id : null;
+  // }
+
+  selectTab(tab: string) {
+    this.selectedTab = tab;
+
+    console.log('selectedTab__',this.selectedTab);
+    
   }
+
+  // toggleFAQ(faq: any) {
+  //   faq.isOpen = !faq.isOpen;
+  // }
+
+  // toggleAIF(aif: any) {
+  //   aif.isOpen = !aif.isOpen;
+  // }
 }

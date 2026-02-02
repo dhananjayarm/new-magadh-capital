@@ -1,122 +1,151 @@
- <div class="post-content">
-    <table style="    width: 50%;
-    margin: auto;
-    border-collapse: separate;
-    border-spacing: 0 10px;">
-        <tr>
-            <td colspan="5">Title of Grievance<span
-                    style="color: red;">*</span></td>
-            <td colspan="1">:</td>
-            <td colspan="6" style="text-align: end;"> <input
-                    style="width: 90%;     height: 35px;   border: 1px solid darkgrey;
-    border-radius: 5px;" type="text" id="title" name="title" value></td>
-        </tr>
+<h2 id="grievance-heading" class="text-center">
+  Investor Assistance – Grievance Form
+</h2>
 
-        <tr>
-            <td colspan="5">Name of Grievant<span
-                    style="color: red;">*</span></td>
-            <td colspan="1">:</td>
-            <td colspan="6" style="text-align: end;"> <input
-                    type="text" style="width: 90%;    height: 35px;
-        border: 1px solid darkgrey;
-    border-radius: 5px;" id="Grievant" name="Grievant" value></td>
-        </tr>
+<form
+  #grievanceForm="ngForm"
+  id="grievanceForm"
+  aria-labelledby="grievance-heading mandatory-instruction"
+  novalidate
+  (ngSubmit)="submitForm(grievanceForm)"
+>
 
-        <tr>
-            <td colspan="5">Nature of Grievance</td>
-            <td colspan="1">:</td>
-            <td colspan="6" style="text-align: end;">
+  <!-- Mandatory instruction -->
+  <p id="mandatory-instruction" class="mandatory-note">
+    <span class="required">*</span> denotes mandatory fields
+  </p>
 
-                <textarea type="text"
-                    style="width: 90%;    border: 1px solid darkgrey;
-    border-radius: 5px;" id="Nature" name="Nature" value></textarea></td>
-        </tr>
-        <tr>
-            <td colspan="5">Email where we can reach you</td>
-            <td colspan="1">:</td>
-            <td colspan="6" style="text-align: end;"> <input
-                    type="text" style="width: 90%;    height: 35px;
-        border: 1px solid darkgrey;
-    border-radius: 5px;" id="Email" name="Email" value></td>
-        </tr>
-
-        <tr>
-            <td colspan="5">Contact Number</td>
-            <td colspan="1">:</td>
-            <td colspan="6" style="text-align: end;"> <input
-                    type="text" style="width: 90%;    height: 35px;
-        border: 1px solid darkgrey;
-    border-radius: 5px;" id="Contact_no" name="Contact_no" value></td>
-        </tr>
-        <tr>
-            <td colspan="5">Preferable Time to Contact</td>
-            <td colspan="1">:</td>
-            <td colspan="6" style="text-align: end;"> <input
-                    type="text" style="width: 90%;    height: 35px;
-        border: 1px solid darkgrey;
-    border-radius: 5px;" id="Preferable_time" name="Preferable_time" value></td>
-        </tr>
-        <tr>
-            <td></td>
-        </tr>
-        <tr>
-            <!-- <td colspan="6"></td> -->
-            <td colspan="12" style="text-align: center;"><a
-                    class="btn btn-default"
-                    id="submitBtn"> Submit</a>
-                <div id="spinner" style="display: none;">Submitting...</div>
-            </td>
-        </tr>
-        <!-- <tr>
-    <td colspan="5">contact you?</td>
-    <td colspan="1">:</td>
-    <td colspan="6" style="    padding-left: 23px;
-    "><input type="radio" id="Yes" name="contact" value="YES">
-    <label for="Yes" style="margin-right: 25px;">Yes</label>
-    <input type="radio" id="No" name="contact" value="No">
-    <label for="No">No</label></td>
-  </tr> -->
-        <!-- <tr>
-
-    <button> Submit</button>
-  </tr> -->
-    </table>
-
-    <!-- <div style="width: 50%;
-    background: antiquewhite;
-    margin: auto;" >
-
-<form>
-  <div style="display: flex;">
-  <label for="title">Title of Complaint :</label>
-
-  <div>
-    <input type="text" id="title" name="title" value=""><br>
+  <!-- Error Summary -->
+  <div
+    *ngIf="formErrors.length"
+    id="error-summary"
+    class="error-summary"
+    role="alert"
+    aria-live="assertive"
+    tabindex="-1"
+  >
+    <p><strong>Please correct the following errors:</strong></p>
+    <ul>
+      <li *ngFor="let err of formErrors">{{ err }}</li>
+    </ul>
   </div>
-  </div>
-  <div style="display: flex;">
-    <label for="Describe"> Describe Your Compliant :</label>
-    <div>
-      <input type="text" id="Describe" name="Describe" value=""><br>
+
+  <!-- Title -->
+  <div class="form-row">
+    <label for="title">
+      Title of Grievance
+      <span class="required" aria-hidden="true">*</span>
+    </label>
+
+    <div class="form-field">
+      <input
+        type="text"
+        id="title"
+        name="title"
+        required
+        aria-required="true"
+        [(ngModel)]="model.title"
+        #title="ngModel"
+        aria-describedby="error-title"
+      />
+      <small
+        *ngIf="title.invalid && submitted"
+        id="error-title"
+        class="error-msg"
+        role="alert"
+      >
+        Title of Grievance is required.
+      </small>
     </div>
-</div>
-  <div style="display: flex;">
-
-<label for="Employee">Name or Description of Employee :</label>
-<div>
-  <input type="text" id="Employee" name="Employee" value=""><br>
-</div>
-</div>
-  <div style="display: flex;">
-
-<label for="contact">May we contact you? :</label>
-<div>
-  <input type="radio" id="Yes" name="contact" value="YES">
-  <label for="Yes">Yes</label>
-  <input type="radio" id="No" name="contact" value="No">
-  <label for="No">No</label>
   </div>
+
+  <!-- Name -->
+  <div class="form-row">
+    <label for="grievant">
+      Name of Grievant
+      <span class="required" aria-hidden="true">*</span>
+    </label>
+
+    <div class="form-field">
+      <input
+        type="text"
+        id="grievant"
+        name="grievant"
+        required
+        aria-required="true"
+        [(ngModel)]="model.grievant"
+        #grievant="ngModel"
+        aria-describedby="error-grievant"
+      />
+      <small
+        *ngIf="grievant.invalid && submitted"
+        id="error-grievant"
+        class="error-msg"
+        role="alert"
+      >
+        Name of Grievant is required.
+      </small>
+    </div>
   </div>
+
+  <!-- Nature -->
+  <div class="form-row">
+    <label for="nature">Nature of Grievance</label>
+    <div class="form-field">
+      <textarea
+        id="nature"
+        name="nature"
+        [(ngModel)]="model.nature"
+      ></textarea>
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div class="form-row">
+    <label for="email">Email where we can reach you</label>
+    <div class="form-field">
+      <input
+        type="email"
+        id="email"
+        name="email"
+        autocomplete="email"
+        [(ngModel)]="model.email"
+      />
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="form-row">
+    <label for="contact">Contact Number</label>
+    <div class="form-field">
+      <input
+        type="tel"
+        id="contact"
+        name="contact"
+        autocomplete="tel"
+        [(ngModel)]="model.contact"
+      />
+    </div>
+  </div>
+
+  <!-- Time -->
+  <div class="form-row">
+    <label for="time">Preferable Time to Contact</label>
+    <div class="form-field">
+      <input
+        type="text"
+        id="time"
+        name="time"
+        [(ngModel)]="model.time"
+      />
+    </div>
+  </div>
+
+  <!-- Submit -->
+  <div class="form-actions">
+    <a type="submit" class="button" (click)="submitForm(grievanceForm)">
+      Submit
+    </a>
+  </div>
+
 </form>
-  </div> -->
-</div>
