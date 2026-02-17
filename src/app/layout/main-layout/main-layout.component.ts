@@ -20,4 +20,12 @@ export class MainLayoutComponent {
       this.isScrollTopVisible = false;
     }, 600);
   }
+  skipToMain(event: Event) {
+    event.preventDefault();
+    // id="home-content"
+    const main = document.getElementById('main-content');
+    // const main = document.getElementById('home-content');
+    main?.focus();
+    main?.scrollIntoView({ behavior: 'smooth' });
+  }
 }

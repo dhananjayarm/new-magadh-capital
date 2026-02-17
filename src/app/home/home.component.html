@@ -5,16 +5,66 @@
   This section contains a slideshow that auto-advances every 6 seconds. 
   Use the Previous, Next, Pause, and Play buttons to navigate at your own pace.
 </div>
-
+<!-- 
 <div id="homeCarousel" class="carousel slide slider-pro"
      data-bs-ride="carousel"
      data-bs-interval="6000"
      data-bs-pause="hover"
      data-bs-wrap="true"
-     data-bs-touch="true">
+     data-bs-touch="true"> -->
 
-  <!-- Indicators -->
-  <div class="carousel-indicators sp-slides">
+
+	 <div id="homeCarousel"
+     class="carousel slide position-relative"
+     data-bs-ride="carousel"
+     data-bs-interval="6000"
+     data-bs-pause="hover"
+     data-bs-wrap="true">
+
+
+  <!-- TOP CONTROLS (Pause + Arrows) -->
+  <div class="carousel-controls-top">
+
+    <!-- Pause / Play -->
+    <button class="carousel-toggle"
+            (click)="toggleCarousel()"
+            [attr.aria-label]="isPaused ? 'Play slideshow' : 'Pause slideshow'">
+      {{ isPaused ? '▶ Play' : '⏸ Pause' }}
+    </button>
+
+    <!-- Previous -->
+    <button class="carousel-arrow"
+            type="button"
+            data-bs-target="#homeCarousel"
+            data-bs-slide="prev"
+            aria-label="Previous Slide">
+      ‹
+    </button>
+
+    <!-- Next -->
+    <button class="carousel-arrow"
+            type="button"
+            data-bs-target="#homeCarousel"
+            data-bs-slide="next"
+            aria-label="Next Slide">
+      ›
+    </button>
+
+  </div>
+<ol class="carousel-indicators" aria-label="Carousel slide indicators">
+  <li *ngFor="let slide of slides; let i = index">
+    <button type="button"
+            data-bs-target="#homeCarousel"
+            [attr.data-bs-slide-to]="i"
+            [class.active]="i===0"
+            [attr.aria-current]="i===0 ? 'true' : null"
+            [attr.aria-label]="'Go to slide ' + (i + 1)">
+    </button>
+  </li>
+</ol>
+
+
+   <!-- <div class="carousel-indicators sp-slides">
     <button *ngFor="let slide of slides; let i = index"
             type="button"
             data-bs-target="#homeCarousel"
@@ -23,40 +73,44 @@
             [attr.aria-current]="i===0 ? 'true' : null"
             [attr.aria-label]="'Slide ' + (i+1)">
     </button>
-  </div>
+  </div> -->
 
-  <!-- Slides -->
-  <div class="carousel-inner">
+   <div class="carousel-inner">
     <div *ngFor="let slide of slides; let i = index" 
          class="carousel-item" 
          [class.active]="i===0">
       <img [src]="slide.img" class="d-block w-100" [alt]="slide.alt">
-      <div class="carousel-caption text-center">
-        <h1>{{slide.title}}</h1>
+      <!-- <div class="carousel-caption text-center">
+        <span>{{slide.title}}</span>
         <p>{{slide.text}}</p>
+      </div> -->
+	   <div class="carousel-caption">
+        <div class="caption-box">
+          <h3>{{slide.title}}</h3>
+          <p>{{slide.text}}</p>
+        </div>
       </div>
+
     </div>
   </div>
 
   <!-- Prev/Next Controls -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+  <!-- <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous Slide</span>
   </button>
   <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next Slide</span>
-  </button>
+  </button> -->
 
-  <!-- Pause/Play Controls -->
-  <!-- <div class="mt-2 text-center">
-    <button class="btn btn-secondary me-2" (click)="pauseCarousel()">Pause Slideshow</button>
-    <button class="btn btn-primary" (click)="playCarousel()">Play Slideshow</button>
-  </div> -->
+ 
 </div>
 
+
+
 <!-- FEATURES -->
-<section class="introtext container">
+<section class="introtext container" id="home-content">
 
 	<div class="row">
 		<div class="col-sm-12">
@@ -317,17 +371,28 @@
     <h2 class="text-center">
       <span class="text-primary">DISCLAIMER</span>
     </h2>
+<div class="col-sm-12">
+  <dl class="row mb-3 align-items-center">
 
-    <div class="col-sm-12">
-      <div class="row mb-3">
-        <div class="col-6 text-start">
-          PMS Registration: INP000007155
-        </div>
-        <div class="col-6 text-end">
-          AIF Registration: IN/AIF3/16-17/0279
-        </div>
-      </div>
-    </div>
+    <!-- Left Side -->
+    <dt class="col-md-3 col-6 fw-bold text-start">
+      PMS Registration:
+    </dt>
+    <dd class="col-md-3 col-6 text-start">
+      INP000007155
+    </dd>
+
+    <!-- Right Side -->
+    <dt class="col-md-3 col-6 fw-bold text-md-end text-start">
+      AIF Registration:
+    </dt>
+    <dd class="col-md-3 col-6 text-start">
+      IN/AIF3/16-17/0279
+    </dd>
+
+  </dl>
+</div>
+
 
     <div class="col-sm-12 mb-4">
  
@@ -383,14 +448,9 @@
 
 
 <!-- CONTACT MAP FOOTER SECTION -->
-<!-- CONTACT MAP FOOTER SECTION -->
 <section class="footer" style="padding:0" id="contact-us">
-
-
   <div class="footer-widgets1 px-6">
-
   <address>    <strong>Address: Magadh Capital Advisors LLP</strong>, Marathon Futurex, Lower Parel, Mumbai, Maharashtra 400013, India  </address>
- 
 </div>
     <!-- Visual map (secondary) -->
     <div class="row1">
@@ -402,7 +462,7 @@
         loading="lazy"
         allowfullscreen
         title="Location map showing Magadh Capital office at Marathon Futurex, Mumbai"
-        aria-hidden="true">
+         >
       </iframe>
     </div>
 

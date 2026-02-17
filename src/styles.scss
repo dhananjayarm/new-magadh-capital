@@ -70,16 +70,19 @@ button:focus-visible {
   position: absolute;
   top: -40px;
   left: 0;
-  background: #000;
-  color: #fff;
+  // background: #000;
+  color: #4da3ff;
   padding: 8px 12px;
   z-index: 10000;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .skip-link:focus {
   top: 0;
+  color: #4da3ff;
+  outline: 3px solid #ffd700;
 }
+
 .menu-item ul {
   display: none;
   list-style: none;
@@ -272,11 +275,11 @@ a:focus,
   outline-offset: 2px;
   color: #000;
   font-weight: 600;
-    /* ensure text is readable */
-    text-decoration: underline;
-    /* optional visual cue */
-    // background-color: #ffffff;
-    /* ensure contrast if background changes */
+  /* ensure text is readable */
+  text-decoration: underline;
+  /* optional visual cue */
+  // background-color: #ffffff;
+  /* ensure contrast if background changes */
 }
 
 /* Optional: active tab styling */
@@ -372,10 +375,10 @@ h2 a {
   font-size: 14px;
   padding: 12px 16px;
   // outline: 3px solid #F58220;
-    //   /* High contrast outline */
-    //   outline-offset: 2px;
-    //   /* Slight gap for visibility */
-    //   text-decoration: underline
+  //   /* High contrast outline */
+  //   outline-offset: 2px;
+  //   /* Slight gap for visibility */
+  //   text-decoration: underline
   background: #f58220;
   border-radius: 3px;
   text-decoration: none;
@@ -4890,7 +4893,7 @@ form#commentform input#submit:hover {
 .normaltabs.tabs-top-horizontal > .nav-tabs > li > a:focus {
   border: 0;
   background: rgba(130, 21, 23, 0.8);
-    /* 80% opacity instead of full */
+  /* 80% opacity instead of full */
   border-radius: 0;
   color: #fff;
   transition: background 0.3s ease;
@@ -6232,7 +6235,7 @@ section.footer {
   color: #fff;
   font-size: 13px;
   display: inline-block;
-  padding-top: 7px;
+  // padding-top: 7px;
   text-align: center;
   height: 34px;
   width: 34px;
@@ -6298,7 +6301,7 @@ section.footer {
   z-index: 10000;
   height: 59px;
   width: 59px;
-  background-color: #f58220;
+  background-color: #a94e00;
   background-repeat: no-repeat;
   background-position: center;
   box-shadow:
@@ -6319,7 +6322,8 @@ section.footer {
   font-size: 17px;
 }
 
-#back-to-top:hover {
+#back-to-top:hover,
+#back-to-top:focus {
   background: #821517;
   -webkit-transform: scale3d(1, 1, 1);
   transform: scale3d(1, 1, 1);
@@ -6398,9 +6402,9 @@ section.footer {
     /* Stops menu from wrapping down */
   }
 
-        #navigation {
-          display: none;
-        }
+  #navigation {
+    display: none;
+  }
 
   .slicknav_menu {
     position: fixed;

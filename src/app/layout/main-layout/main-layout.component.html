@@ -1,9 +1,12 @@
 <!-- Header -->
-<a routerLink="/" class="skip-link">Skip to main content</a>
+<a href="#" (click)="skipToMain($event)" class="skip-link">
+  Skip to main content
+</a>
+
 
 <app-header></app-header>
 <!-- Main Content -->
-<main id="home" role="main" tabindex="-1">
+<main id="main-content" role="main" tabindex="-1">
   <router-outlet></router-outlet>
 </main>
 <!-- Footer -->
@@ -21,25 +24,33 @@
           Copyright Magadh Capital. All Rights Reserved.
         </p>
       </div>
-      <div class="col-sm-2 d-flex justify-content-center" style="gap: 10px; text-align: end;">
-  <!-- Facebook Icon -->
-  <a
-    aria-label="Visit Magadh Capital on Facebook"
-    href="https://www.facebook.com/people/Magadh-Capital/pfbid0XkwwgRKoL77QPpJxNqzi8hDSDXKAfgiF1r1TNYm7Wo4WLCYrfdg2iK3LXkamxBsDl/"
-    class="fa fa-facebook social-icon"
-    target="_blank"
-    rel="noopener noreferrer"
-  ></a>
+  
 
-  <!-- LinkedIn Icon -->
-  <a
-    aria-label="Visit Magadh Capital on LinkedIn"
-    href="https://www.linkedin.com/company/magadh-capital-advisors-llp/?originalSubdomain=in"
-    class="fa fa-linkedin social-icon linkedin"
-    target="_blank"
-    rel="noopener noreferrer"
-  ></a>
+
+<div class="col-sm-2 d-flex justify-content-center">
+  <ul class="social-links">
+    <li>
+      <a
+        aria-label="Visit Magadh Capital on Facebook"
+        href="https://www.facebook.com/people/Magadh-Capital/pfbid0XkwwgRKoL77QPpJxNqzi8hDSDXKAfgiF1r1TNYm7Wo4WLCYrfdg2iK3LXkamxBsDl/"
+        class="  "
+        target="_blank"
+        rel="noopener noreferrer"
+      > <i class="fa fa-facebook social-icon "></i> </a>
+    </li>
+
+    <li>
+      <a
+        aria-label="Visit Magadh Capital on LinkedIn"
+        href="https://www.linkedin.com/company/magadh-capital-advisors-llp/?originalSubdomain=in"
+        class=" "
+        target="_blank"
+        rel="noopener noreferrer"
+      ><i class="fa fa-linkedin social-icon "></i></a>
+    </li>
+  </ul>
 </div>
+
     </div>
   </div>
 </footer>

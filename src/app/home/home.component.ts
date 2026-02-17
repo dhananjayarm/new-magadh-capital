@@ -9,7 +9,8 @@ declare const bootstrap: any;
 })
 export class HomeComponent implements AfterViewInit {
   carouselInstance!: Carousel;
-
+  carousel: any;
+  isPaused = false;
   slides = [
     {
       img: 'assets/img/1_home.jpg',
@@ -49,22 +50,38 @@ export class HomeComponent implements AfterViewInit {
     }
   ];
 
-  ngAfterViewInit(): void {
-    const carouselEl = document.getElementById('homeCarousel');
-
-    if (carouselEl) {
-      // Respect prefers-reduced-motion
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const intervalValue = prefersReducedMotion ? 0 : 6000;
-
-      this.carouselInstance = new Carousel(carouselEl, {
-        interval: intervalValue,
-        pause: 'hover',
-        wrap: true,
-        touch: true
-      });
-    }
+  ngAfterViewInit() {
+    const element = document.querySelector('#homeCarousel');
+    this.carousel = new bootstrap.Carousel(element, {
+      interval: 6000,
+      ride: 'carousel'
+    });
   }
+
+  toggleCarousel() {
+    if (this.isPaused) {
+      this.carousel.cycle();
+    } else {
+      this.carousel.pause();
+    }
+    this.isPaused = !this.isPaused;
+  }
+  // ngAfterViewInit(): void {
+  //   const carouselEl = document.getElementById('homeCarousel');
+
+  //   if (carouselEl) {
+  //     // Respect prefers-reduced-motion
+  //     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  //     const intervalValue = prefersReducedMotion ? 0 : 6000;
+
+  //     this.carouselInstance = new Carousel(carouselEl, {
+  //       interval: intervalValue,
+  //       pause: 'hover',
+  //       wrap: true,
+  //       touch: true
+  //     });
+  //   }
+  // }
 
   pauseCarousel() {
     this.carouselInstance.pause();

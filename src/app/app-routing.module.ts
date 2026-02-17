@@ -19,7 +19,6 @@ import { InvestorFaqComponent } from './investor-faq/investor-faq.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PhilosophyComponent } from './philosophy/philosophy.component';
 import { PmsfaqComponent } from './pmsfaq/pmsfaq.component';
-import { ResourcesComponent } from './resources/resources.component';
 import { RiskManagementComponent } from './risk-management/risk-management.component';
 import { TeamComponent } from './team/team.component';
 
@@ -40,7 +39,7 @@ const routes: Routes = [
   { path: 'inspiration', component: InspirationComponent },
   { path: 'philosophy', component: PhilosophyComponent },
   { path: 'pmsfaq', component: PmsfaqComponent },
-  { path: 'resources', component: ResourcesComponent },
+  // { path: 'resources', component: ResourcesComponent },
   { path: 'risk-management', component: RiskManagementComponent },
   { path: 'investment-process', component: InvestmentProcessComponent },
   { path: 'how-to-invest-with-us', component: HowToInvestWithUsComponent },

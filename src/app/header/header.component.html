@@ -17,7 +17,7 @@
             </div>
             
             <!-- Hamburger Menu Icon (Mobile Only) -->
-          <button class="hamburger-menu d-md-none"
+          <button class="hamburger-menu  "
           style="z-index: 999; align-items: end;    
  
     margin-top: 0;
@@ -36,7 +36,7 @@
 
             <!-- Desktop Navigation -->
             <div class="col-sm-11 d-none d-md-block">
-              <nav id="desktop-menu" role="navigation" aria-label="Main Navigation">
+              <!-- <nav id="desktop-menu" role="navigation" aria-label="Main Navigation">
                 <ul class="sf-menu" id="navigation">
                   <li routerLinkActive="current" [routerLinkActiveOptions]="{ exact: true }">
                     <a routerLink="/" aria-current="page">Home</a>
@@ -103,7 +103,139 @@
                     <a routerLink="/contact-us" aria-current="contact-us">Contact</a>
                   </li>
                 </ul>
-              </nav>
+              </nav> -->
+           <nav id="desktop-menu" role="navigation" aria-label="Main Navigation">
+  <ul class="sf-menu" id="navigation">
+
+    <!-- Home -->
+    <li routerLinkActive="current"
+        #rlaHome="routerLinkActive"
+        [routerLinkActiveOptions]="{ exact: true }">
+      <a routerLink="/"
+         [attr.aria-current]="rlaHome.isActive ? 'page' : null">
+        Home
+      </a>
+    </li>
+
+    <!-- Backbone -->
+    <li routerLinkActive="current"
+        #rlaBackbone="routerLinkActive">
+      <a routerLink="/backbone"
+         [attr.aria-current]="rlaBackbone.isActive ? 'page' : null">
+        The Backbone
+      </a>
+    </li>
+
+    <!-- Difference -->
+    <li routerLinkActive="current"
+        #rlaDiff="routerLinkActive">
+      <a routerLink="/difference"
+         [attr.aria-current]="rlaDiff.isActive ? 'page' : null">
+        Magadh Difference
+      </a>
+    </li>
+
+    <!-- Investment Framework -->
+    <li class="menu-item"
+        routerLinkActive="current"
+        #rlaPhilo="routerLinkActive">
+      <a routerLink="/philosophy"
+         [attr.aria-current]="rlaPhilo.isActive ? 'page' : null">
+        Investment Framework
+        <span class="sr-only">(has submenu)</span>
+      </a>
+
+      <ul class="submenu">
+        <li>
+          <a [routerLink]="['/philosophy']"
+             fragment="style">
+            Investment Philosophy & Style
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/philosophy']"
+             fragment="process">
+            Investment Process
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/philosophy']"
+             fragment="inspiration">
+            Our Inspiration
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Risk Management -->
+    <li routerLinkActive="current"
+        #rlaRisk="routerLinkActive">
+      <a routerLink="/risk-management"
+         [attr.aria-current]="rlaRisk.isActive ? 'page' : null">
+        Risk Management
+      </a>
+    </li>
+
+    <!-- Team -->
+    <li routerLinkActive="current"
+        #rlaTeam="routerLinkActive">
+      <a routerLink="/team"
+         [attr.aria-current]="rlaTeam.isActive ? 'page' : null">
+        Our Team
+      </a>
+    </li>
+
+    <!-- Resources -->
+    <li class="menu-item"
+        routerLinkActive="current"
+        #rlaResources="routerLinkActive">
+      <a routerLink="/resources"
+         [attr.aria-current]="rlaResources.isActive ? 'page' : null">
+        Resources
+        <span class="sr-only">(has submenu)</span>
+      </a>
+
+      <ul class="submenu">
+        <li><a [routerLink]="['/resources']" fragment="our_blogs">Our Blogs</a></li>
+        <li><a [routerLink]="['/resources']" fragment="Media">Media</a></li>
+        <li><a [routerLink]="['/resources']" fragment="Investor_Letters">Investor Letters</a></li>
+        <li><a [routerLink]="['/resources']" fragment="towards_awareness">Towards Awareness</a></li>
+        <li><a [routerLink]="['/resources']" fragment="UPI">UPI Payment</a></li>
+      </ul>
+    </li>
+
+    <!-- Assistance -->
+    <li class="menu-item"
+        routerLinkActive="current"
+        #rlaAssist="routerLinkActive">
+      <a routerLink="/assistance"
+         [attr.aria-current]="rlaAssist.isActive ? 'page' : null">
+        Investor Assistance
+        <span class="sr-only">(has submenu)</span>
+      </a>
+
+      <ul class="submenu">
+        <li><a (click)="loginPage()" style="cursor:pointer;">Login</a></li>
+        <li><a [routerLink]="['/assistance']" fragment="invest">How to invest with us</a></li>
+        <li><a [routerLink]="['/assistance']" fragment="download">Downloads</a></li>
+        <li><a [routerLink]="['/assistance']" fragment="complaints">Grievances</a></li>
+        <li><a [routerLink]="['/assistance']" fragment="FAQ">FAQ</a></li>
+      </ul>
+    </li>
+
+    <!-- Contact -->
+    <li routerLinkActive="current"
+        #rlaContact="routerLinkActive">
+      <a routerLink="/contact-us"
+         [attr.aria-current]="rlaContact.isActive ? 'page' : null">
+        Contact
+      </a>
+    </li>
+
+  </ul>
+</nav>
+
+           
             </div>
           </div>
         </div>

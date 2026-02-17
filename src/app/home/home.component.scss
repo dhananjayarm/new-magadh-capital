@@ -20,7 +20,7 @@
     width: min(90%, 1000px);
   }
 
-  .carousel-caption h1 {
+  .carousel-caption span {
     color: #fff;
     font-size: 28px;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
@@ -151,9 +151,87 @@ span.typcn {
 }
 address {
   display: flex;
-  white-space: nowrap;
+  // white-space: nowrap;
   margin: auto;
   margin-left: 20px;
   justify-content: center;
   color: #ccc;
+}
+
+/* ===== Top Controls ===== */
+
+.carousel-controls-top {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.carousel-toggle,
+.carousel-arrow {
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  min-width: 44px;
+}
+
+.carousel-toggle:hover,
+.carousel-arrow:hover,
+.carousel-toggle:focus,
+.carousel-arrow:focus {
+  background: #000000;
+  outline: 2px solid #ffffff;
+}
+
+/* ===== Indicators ===== */
+
+.carousel-indicators {
+  bottom: 15px;
+}
+
+.carousel-indicators button {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #000000;
+  border: 2px solid #ffffff;
+  opacity: 0.8;
+}
+
+.carousel-indicators button.active {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  opacity: 1;
+}
+
+/* ===== Caption Styling ===== */
+
+.carousel-caption {
+  bottom: 20%;
+}
+
+.caption-box {
+  background: rgba(0, 0, 0, 0.65);
+  color: #ffffff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  display: inline-block;
+  max-width: 80%;
+  text-align: center;
+}
+
+.caption-box h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.caption-box p {
+  font-size: 16px;
+  margin: 0;
 }
