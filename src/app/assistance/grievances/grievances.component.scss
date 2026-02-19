@@ -92,3 +92,19 @@ textarea {
         text-align: left;
     }
 }
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+    border: 2px solid #b00020;
+}
+
+.error-msg {
+    color: #b00020;
+    font-size: 0.9rem;
+}
+
+.error-summary {
+    border: 2px solid #b00020;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #fff5f5;
+}

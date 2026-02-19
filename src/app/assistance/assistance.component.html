@@ -2,13 +2,15 @@
     <div id="hw-hero">
     <div id="page-header" class="contact">
         <div class="title-breadcrumbs">
+               <div class="caption-box"> 
             <h1>INVESTOR ASSISTANCE</h1>
+               </div>
         </div>
     </div>
 </div>
 </header>
  
-<div class="row">
+<div class="row" id="assistance-content">
     <div class="col-sm-12 normaltabs tabs-top-horizontal my-3">
         <!-- <nav aria-label="Investor Assistance Tabs"> -->
         <ul
@@ -36,7 +38,7 @@
                 class="nav-item"
                 role="presentation"
                 [class.active]="activeTab === 'invest'">
-                <a
+                <button
                     class="nav-link"
                     id="tab-invest-tab"
                     data-bs-toggle="tab"
@@ -44,60 +46,70 @@
                     href="#invest"
                     fragment="invest"
                     role="tab"
+                    type="button"
+                    [attr.tabindex]="activeTab === 'invest' ? '0' : '-1'"
+                    [attr.aria-selected]="activeTab === 'invest'"
                     aria-controls="tab-invest"
-                    aria-selected="false">How to Invest with us</a>
+                    (click)="activeTab='invest'"
+                     >How to Invest with us</button>
             </li>
             <li
                 class="nav-item"
                 role="presentation"
                 [class.active]="activeTab === 'download'">
-                <a
+                <button
                     class="nav-link"
-                    id="tab-download"
+                    id="tab-download-tab"
                     [routerLink]="[]"
                     data-bs-toggle="tab"
                     href="#download"
                     role="tab"
                     aria-controls="tab-download"
-                    aria-selected="false"
-                    fragment="download">Downloads</a>
+                       [attr.tabindex]="activeTab === 'download' ? '0' : '-1'"
+                    [attr.aria-selected]="activeTab === 'download'"
+                     (click)="activeTab='download'"
+                    fragment="download">Downloads</button>
             </li>
             <li
                 class="nav-item"
                 role="presentation"
                 [class.active]="activeTab === 'complaints'">
-                <a
+                <button
                     class="nav-link"
-                    id="tab-complaints"
+                    id="tab-complaints-tab"
                     [routerLink]="[]"
                     data-bs-toggle="tab"
                     href="#complaints"
                     role="tab"
                     aria-controls="tab-complaints"
-                    aria-selected="false"
-                    fragment="complaints">Grievances</a>
+                     [attr.tabindex]="activeTab === 'complaints' ? '0' : '-1'"
+                    [attr.aria-selected]="activeTab === 'complaints'"
+                     (click)="activeTab='complaints'"
+                    fragment="complaints">Grievances</button>
             </li>
             <li
                 class="nav-item"
                 role="presentation"
                 [class.active]="activeTab === 'FAQ'">
-                <a
+                <button
                     class="nav-link"
-                    id="tab-FAQ"
+                    id="tab-FAQ-tab"
                     [routerLink]="[]"
                     data-bs-toggle="tab"
                     href="#FAQ"
                     role="tab"
                     aria-controls="tab-FAQ"
-                    aria-selected="false"
-                    fragment="FAQ">FAQ</a>
+                     [attr.tabindex]="activeTab === 'FAQ' ? '0' : '-1'"
+                    [attr.aria-selected]="activeTab === 'FAQ'"
+                     (click)="activeTab='FAQ'"
+                    fragment="FAQ">FAQ</button>
             </li>
         </ul>
         <!-- </nav> -->
         <main id="main-content">
  
         <div class="tab-content">
-            <div class="tab-pane fade in" id="login">
+            <div class="tab-pane fade in"  id="tab-login">
                 <app-login-in
                     *ngIf="activeTab === 'login'"
                     [class.active]="activeTab === 'login'"
@@ -105,17 +117,18 @@
             </div>
             <div
                 class="tab-pane"
-                id="invest"
+                id="tab-invest"
                 [class.active]="activeTab === 'invest'"
                 [class.show]="activeTab === 'invest'"
                 *ngIf="activeTab === 'invest'">
                 <app-how-to-invest-with-us></app-how-to-invest-with-us>
             </div>
-            <app-downloads
+            <app-downloads 
+            id="tab-download"
                 *ngIf="activeTab === 'download'"
                 [class.active]="activeTab === 'download'"
                 [class.show]="activeTab === 'download'"></app-downloads>
-            <app-grievances
+            <app-grievances id="tab-complaints"
                 *ngIf="activeTab === 'complaints'"
                 [class.active]="activeTab === 'complaints'"
                 [class.show]="activeTab === 'complaints'"></app-grievances>

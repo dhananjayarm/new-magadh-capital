@@ -20,12 +20,49 @@ export class MainLayoutComponent {
       this.isScrollTopVisible = false;
     }, 600);
   }
+  // skipToMain(event: Event) {
+  //   event.preventDefault();
+  //   // id="home-content"
+  //   // const main = document.getElementById('main-content');
+  //   const main = document.getElementById('home-content');
+  //   main?.focus();
+  //   main?.scrollIntoView({ behavior: 'smooth' });
+  // }
   skipToMain(event: Event) {
     event.preventDefault();
-    // id="home-content"
-    const main = document.getElementById('main-content');
-    // const main = document.getElementById('home-content');
-    main?.focus();
-    main?.scrollIntoView({ behavior: 'smooth' });
+
+    // Try to find a main content area dynamically
+    const mainIds = [
+      'home-content',
+      'contact-content',
+      'team-content',
+      'backbone-content',
+      'difference-content',
+      'myTabs',
+      'assistance-content',
+      'inspiration-content',
+      'philosophy-content',
+      'pmsfaq-content',
+      'risk-content',
+      'investment-process-content',
+      'how-to-invest-content',
+      'download_links',
+      'grievanceForm',
+      'investor-faq-content',
+      'login-content',
+      'resources-content'
+    ];
+
+    let main: HTMLElement | null = null;
+    for (const id of mainIds) {
+      main = document.getElementById(id);
+      if (main) break;
+    }
+
+    if (main) {
+      main.tabIndex = -1; // Ensure focusable
+      main.focus();
+      main.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }

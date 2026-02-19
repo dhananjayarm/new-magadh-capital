@@ -1,5 +1,5 @@
 button.accordion-button.active-question {
-  color: #fe9a00;
+  color: #B35400;
   /* Or any highlight color matching your UI */
   font-weight: 600;
 }
@@ -12,6 +12,9 @@ button.accordion-button:focus {
   //   outline: 2px solid #fe9a00;
   /* bright outline for keyboard focus */
   outline-offset: 2px;
-  color: #fe9a00;
+  color: #B35400;
   /* optional: change text color */
+}
+.accordion-button {
+  color: #000000;
 }

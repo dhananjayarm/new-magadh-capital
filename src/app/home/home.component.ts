@@ -49,6 +49,9 @@ export class HomeComponent implements AfterViewInit {
       text: 'In keeping with our view that markets are inherently risky, we assign high priority to assessing, understanding and optimising risk pertaining to stocks and portfolios - Capital protection is a crucial focus area for us'
     }
   ];
+  getSlideLabel(index: number): string {
+    return `Slide ${index + 1} of ${this.slides.length}`;
+  }
 
   ngAfterViewInit() {
     const element = document.querySelector('#homeCarousel');

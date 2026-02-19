@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AssistanceComponent } from './assistance/assistance.component';
@@ -27,7 +28,6 @@ import { PmsfaqComponent } from './pmsfaq/pmsfaq.component';
 import { ResoursesComponent } from './resourses/resourses.component';
 import { RiskManagementComponent } from './risk-management/risk-management.component';
 import { TeamComponent } from './team/team.component';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -59,7 +59,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

@@ -1,6 +1,8 @@
 <h2 id="grievance-heading" class="text-center">
   Investor Assistance – Grievance Form
 </h2>
+ 
+
 
 <form
   #grievanceForm="ngForm"
@@ -43,18 +45,34 @@
         id="title"
         name="title"
         required
+        minlength="3"
+        maxlength="100"
+        pattern="^[a-zA-Z0-9 .,-]+$"
         aria-required="true"
         [(ngModel)]="model.title"
         #title="ngModel"
-        aria-describedby="error-title"
+        [attr.aria-invalid]="title.invalid && submitted ? 'true' : null"
+        [attr.aria-describedby]="title.invalid && submitted ? 'error-title' : null"
       />
+
       <small
-        *ngIf="title.invalid && submitted"
+        *ngIf="submitted && title.errors"
         id="error-title"
         class="error-msg"
         role="alert"
       >
-        Title of Grievance is required.
+        <span *ngIf="title.errors['required']">
+          Title of Grievance is required.
+        </span>
+        <span *ngIf="title.errors['minlength']">
+          Title must be at least 3 characters long.
+        </span>
+        <span *ngIf="title.errors['maxlength']">
+          Title cannot exceed 100 characters.
+        </span>
+        <span *ngIf="title.errors['pattern']">
+          Only letters, numbers, spaces, and . , - are allowed.
+        </span>
       </small>
     </div>
   </div>
@@ -72,18 +90,34 @@
         id="grievant"
         name="grievant"
         required
+        minlength="3"
+        maxlength="60"
+        pattern="^[a-zA-Z ]+$"
         aria-required="true"
         [(ngModel)]="model.grievant"
         #grievant="ngModel"
-        aria-describedby="error-grievant"
+        [attr.aria-invalid]="grievant.invalid && submitted ? 'true' : null"
+        [attr.aria-describedby]="grievant.invalid && submitted ? 'error-grievant' : null"
       />
+
       <small
-        *ngIf="grievant.invalid && submitted"
+        *ngIf="submitted && grievant.errors"
         id="error-grievant"
         class="error-msg"
         role="alert"
       >
-        Name of Grievant is required.
+        <span *ngIf="grievant.errors['required']">
+          Name of Grievant is required.
+        </span>
+        <span *ngIf="grievant.errors['minlength']">
+          Name must be at least 3 characters long.
+        </span>
+        <span *ngIf="grievant.errors['maxlength']">
+          Name cannot exceed 60 characters.
+        </span>
+        <span *ngIf="grievant.errors['pattern']">
+          Only alphabetic characters and spaces are allowed.
+        </span>
       </small>
     </div>
   </div>
@@ -95,6 +129,7 @@
       <textarea
         id="nature"
         name="nature"
+        maxlength="500"
         [(ngModel)]="model.nature"
       ></textarea>
     </div>
@@ -108,8 +143,11 @@
         type="email"
         id="email"
         name="email"
-        autocomplete="email"
+         autocomplete="email"
+        email
+        #email="ngModel"
         [(ngModel)]="model.email"
+        [attr.aria-invalid]="email.invalid && submitted ? 'true' : null"
       />
     </div>
   </div>
@@ -122,8 +160,12 @@
         type="tel"
         id="contact"
         name="contact"
+        pattern="^[0-9]{10}$"
+        maxlength="10"
         autocomplete="tel"
+        #contact="ngModel"
         [(ngModel)]="model.contact"
+        [attr.aria-invalid]="contact.invalid && submitted ? 'true' : null"
       />
     </div>
   </div>
@@ -136,16 +178,17 @@
         type="text"
         id="time"
         name="time"
+        maxlength="100"
         [(ngModel)]="model.time"
       />
     </div>
   </div>
 
   <!-- Submit -->
-  <div class="form-actions">
-    <a type="submit" class="button" (click)="submitForm(grievanceForm)">
+  <div class="form-actions" class="d-flex justify-content-center">
+    <button type="submit" class="button" id="submitBtn"  (click)="submitForm(grievanceForm)" style="width: fit-content;">
       Submit
-    </a>
+    </button>
   </div>
 
 </form>

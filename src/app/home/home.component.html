@@ -51,14 +51,15 @@
     </button>
 
   </div>
-<ol class="carousel-indicators" aria-label="Carousel slide indicators">
+<ol class="carousel-indicators" aria-label="Home carousel navigation">
   <li *ngFor="let slide of slides; let i = index">
-    <button type="button"
-            data-bs-target="#homeCarousel"
-            [attr.data-bs-slide-to]="i"
-            [class.active]="i===0"
-            [attr.aria-current]="i===0 ? 'true' : null"
-            [attr.aria-label]="'Go to slide ' + (i + 1)">
+    <button
+      type="button"
+      data-bs-target="#homeCarousel"
+      [attr.data-bs-slide-to]="i"
+      [class.active]="i === 0"
+      [attr.aria-current]="i === 0 ? 'true' : null"
+      [attr.aria-label]="getSlideLabel(i)">
     </button>
   </li>
 </ol>
@@ -121,7 +122,6 @@
 	   You are requested to take the e-pledge by visiting <a href="https://pledge.mygov.in/cvc/" target="_blank">https://pledge.mygov.in/cvc </a> and reaffirm your commitment to integrity and transparency.
  				</div> -->
 			<div class="row">
-
 				<div class="col-md-6">
 					<img src="assets/documents/futurestarsDec.png"
 						alt="Magadh Future Stars Portfolio Performance: December'25'">
@@ -168,7 +168,7 @@
 			<section class="mb-2">
 				<div style="  font-size: 17px">
 					<p class=" " style="font-size: 17px"><span
-							style="font-size:20px;"><font color="#F58220">"Magadh</font>
+							style="font-size:20px;"><font color="#B35400">"Magadh</font>
 							<font color="#821517" class="ms-1">Capital</font></span> keeps our
 						investors’ interests at the centre of everything that we do.</p>
 					<p style="font-size: 17px; text-align:justify">The PMS invests in Indian
@@ -235,7 +235,7 @@
 
         <div style="height: 3px; width: 30%;" class="bg-primary"></div>
 
-        <h2>THE <span class="text-primary">BACKBONE</span></h2>
+        <h2 id="backboneH2">THE <span class="text-primary">BACKBONE</span></h2>
 
         <p style="text-align:justify;">
           The fund functions on the three broad pillars of:
@@ -265,7 +265,7 @@
           </li>
         </ol>
 
-        <a type="button" class="btn btn-default" routerLink="/backbone">Read more</a>
+        <a type="button" id="readMoreBackbone"  class="btn btn-default" routerLink="/backbone" aria-labelledby="readMoreBackbonebackboneH2">Read more</a>
 
       </div>
       <div class="col-sm-4 col-md-6"></div>
@@ -281,7 +281,7 @@
 			<div class="col-sm-8 col-md-6 wow FadeInLeft" data-wow-duration="600ms"
 				data-wow-delay="600ms">
 				<div style="height: 3px; width: 30%;" class="bg-primary"></div>
-				<h2>THE <span class="text-primary">MAGADH DIFFERENCE</span></h2>
+				<h2 id="magadhdiff">THE <span class="text-primary">MAGADH DIFFERENCE</span></h2>
 				<ul>
 					<li>Intense focus on risk mitigation and capital protection - No attempt to
 						time the market but prepared to take occasional cash calls to avoid deep
@@ -307,7 +307,7 @@
 				<div class="row no-gutter wow fadeInUp" data-wow-duration="600ms"
 					data-wow-delay="600ms">
 					<div style="height: 3px; width: 30%;" class="bg-primary"></div>
-					<h2>INVESTMENT <span style="text-transform:uppercase;"
+					<h2 id="investmentH2">INVESTMENT <span style="text-transform:uppercase;"
 							class="text-primary">Framework</span></h2>
 					<p style="text-align:justify">Magadh Capital’s portfolio construction is
 						based on its proprietary FACTS boxes validation process which optimizes
@@ -325,7 +325,7 @@
 						the core of our valuation exercise though we do apply other methods
 						too.</p>
 				</div>
-				<a type="button" class="btn btn-default" routerLink="/philosophy">Read more</a>
+				<a type="button" id="readMoreinvestmentH2" class="btn btn-default" aria-labelledby="readMoreinvestmentH2investmentH2" routerLink="/philosophy">Read more</a>
 			</div>
 		</div>
 	</div>
@@ -340,7 +340,7 @@
 				<div class="row no-gutter wow fadeInUp" data-wow-duration="600ms"
 					data-wow-delay="600ms">
 					<div style="height: 3px; width: 30%;" class="bg-primary"></div>
-					<h2>RISK <span style="text-transform:uppercase;"
+					<h2 id="RiskManagement">RISK <span style="text-transform:uppercase;"
 							class="text-primary">MANAGEMENT</span></h2>
 					<p style="text-align:justify;">We work with the understanding that markets
 						are inherently risky. We see possibility of permanent capital erosion or
@@ -358,7 +358,7 @@
 						long term opportunities.
 					</p>
 				</div>
-				<a type="button" class="btn btn-default" routerLink="/risk-management">Read more</a>
+				<a type="button" id="readMorrisk" aria-labelledby="readMorriskRiskManagement" class="btn btn-default" routerLink="/risk-management">Read more</a>
 			</div>
 		</div>
 	</div>
@@ -368,8 +368,8 @@
 <section class="projects container mt-5 mb-5"  aria-labelledby="disclaimer-heading">
   <div class="row">
 
-    <h2 class="text-center">
-      <span class="text-primary">DISCLAIMER</span>
+    <h2 class="text-center" id="disclaimer-h2">
+      <span class="text-primary" >DISCLAIMER</span>
     </h2>
 <div class="col-sm-12">
   <dl class="row mb-3 align-items-center">
@@ -437,7 +437,7 @@
       </p>
 
       <div class="text-center pb-4">
-        <a class="btn btn-default" routerLink="/disclaimer" role="button">
+        <a class="btn btn-default" id="readMdisclaimer" aria-labelledby="readMdisclaimerdisclaimer-h2" routerLink="/disclaimer" role="button">
           Read more
         </a>
       </div>
