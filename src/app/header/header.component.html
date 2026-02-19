@@ -28,11 +28,14 @@
     top: 20px;
     right: 10px;"
         (click)="toggleSidePanel()"
-        aria-label="Open menu">
+        aria-label="Open menu"   aria-expanded="false" aria-controls="primary-navigation">
   <span></span>
   <span></span>
   <span></span>
 </button>
+ 
+
+
 
             <!-- Desktop Navigation -->
             <div class="col-sm-11 d-none d-md-block">
@@ -245,8 +248,19 @@
 </header>
 
 <!-- Mobile Side Panel -->
-<div class="side-panel" [class.open]="sidePanelOpen">
+<div 
+  class="side-panel" 
+  [class.open]="sidePanelOpen"
+  role="dialog" 
+  aria-modal="true"
+  aria-labelledby="mobile-menu-heading"
+>
   <button class="close-btn" (click)="closeSidePanel()">✕</button>
+
+  <!-- Modal Heading (hidden visually if needed) -->
+  <h2 id="mobile-menu-heading" class="visually-hidden">
+    Mobile Menu
+  </h2>
 
   <ul class="mobile-menu">
     <li><a (click)="navigate('/')">Home</a></li>
@@ -288,6 +302,7 @@
     <li><a (click)="navigate('/contact-us')">Contact</a></li>
   </ul>
 </div>
+
 <!-- Backdrop Overlay -->
 <div class="backdrop"
      *ngIf="sidePanelOpen"

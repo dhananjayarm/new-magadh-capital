@@ -76,7 +76,7 @@ export class AppComponent {
         return 'Contact Us | Magadh Capital';
 
       default:
-        return 'Magadh Capital';
+        return 'Home | Magadh Capital';
     }
   }
 }
