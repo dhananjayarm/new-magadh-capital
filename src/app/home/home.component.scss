@@ -73,7 +73,7 @@
     font-size: 13px;
     color: #fff;
     box-shadow: 0 6px 18px rgba(245, 130, 32, 0.35);
-    background: #B35400;
+    background: #b35400;
     white-space: nowrap;
   }
 }
@@ -193,6 +193,7 @@ address {
 
 .carousel-indicators {
   bottom: 15px;
+  list-style: none;
 }
 
 .carousel-indicators button {
